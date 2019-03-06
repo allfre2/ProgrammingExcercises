@@ -1,0 +1,11 @@
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\bin\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.deps.json
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\bin\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.runtimeconfig.json
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\bin\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.runtimeconfig.dev.json
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\bin\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.dll
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\bin\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.pdb
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\obj\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.csprojAssemblyReference.cache
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\obj\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.csproj.CoreCompileInputs.cache
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\obj\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.AssemblyInfoInputs.cache
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\obj\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.AssemblyInfo.cs
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\obj\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.dll
+C:\Users\alfre\source\repos\BefungeInterpreterKataCodeWars\BefungeInterpreterKataCodeWars\obj\Debug\netcoreapp2.1\BefungeInterpreterKataCodeWars.pdb
