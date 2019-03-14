@@ -4,18 +4,21 @@ using System.Linq;
 
 namespace BefungeInterpreterKataCodeWars
 {
+    // Just Befunge 93, and some 98.
     class BefungeInterpreterOriginal
-    {
+    {bool debugg;
         void init(string _input)
         {
+            debugg = true;
             output = "";
             stack = new int[stackSize];
             sp = 0;
             ip = 0;
-            x = 0; y = 0;
+            x = -1; y = 0;
             dx = 1; dy = 0;
 
             strmode = false;
+            skipmode = false;
             halt = false;
 
             input = _input;
@@ -41,11 +44,15 @@ namespace BefungeInterpreterKataCodeWars
             init(_input);
             while (true)
             {
-                //Console.WriteLine("\n" + input + "\n");
-                //Console.WriteLine($"> op: ({input[ip]}) ip: {ip} (dx = {dx}, dy = {dy}) size: {w} x {h}, strmode: {strmode}\n  Stack: {string.Concat(StackDump().Select(i => i.ToString() + ","))} \n   ({string.Concat(StackDump().Select(i => (char)i))}) \n  Output: {output}\n");
-                //if(Console.ReadKey().Key.ToString() == "q") break;
-                //Console.Clear();
-
+                if (debugg)
+                {
+                    Console.WriteLine("\n" + input + "\n");
+                    Console.WriteLine($"> op: ({input[ip]}) ip: {ip} (x = {x}, y = {y}) (dx = {dx}, dy = {dy}) size: {w} x {h}, strmode: {strmode} (_x = {_x}, _y = {_y})\n  Stack (sp = {sp}): {string.Concat(StackDump().Select(i => i.ToString() + ","))} \n   ({string.Concat(StackDump().Select(i => (char)i))}) \n  Output: {output}\n");
+                    string key = Console.ReadKey().Key.ToString();
+                    if ( key == "Q") { break; }
+                    if ( key == "S") { debugg = false; }
+                    Console.Clear();
+                }
                 exec(nextOp()); // IndexOutOfBounds
                 if (halt) break;
             }
@@ -55,12 +62,13 @@ namespace BefungeInterpreterKataCodeWars
 
         void exec(char op)
         {
-            int _y, _x, V;
 
             if (op == '"') { strmode = !strmode; return; }
+            if (op == ';') { skipmode = !skipmode; return; }
             if (strmode) { stack[sp++] = op; return; }
+            if(skipmode) { return; }
 
-            if (char.IsDigit(op)) stack[sp++] = op - '0';
+            if (char.IsDigit(op)) { stack[sp++] = (int)(op - '0'); } 
             else
                 switch (op)
                 {
@@ -171,6 +179,21 @@ namespace BefungeInterpreterKataCodeWars
                         if (sp >= 2) { _y = stack[sp - 1]; _x = stack[sp - 2]; stack[sp - 2] = input[index(_x, _y)]; sp -= 1; }
                         break;
 
+                    case '&':
+                        int.TryParse(Console.ReadLine(), out stack[sp++]);
+                        break;
+
+                    case '~':
+                        char c;
+                        char.TryParse(Console.ReadLine(), out c);
+                        break;
+                    
+                    // TODO: a-f, psh hex integer 10 - 15
+                    // TODO: ]  [ turn right, turn left
+
+                    case '=': // TODO: Execute
+                        break;
+
                     case '@':
                         halt = true;
                         break;
@@ -233,7 +256,11 @@ namespace BefungeInterpreterKataCodeWars
 
         bool strmode,
 
+             skipmode,
+
              halt;
+
+        int _y, _x, V;
 
         public IEnumerable<int> StackDump() => stack.Take(sp);
     }
