@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+	Soluciones Codewars
+</title>
+</head>
+<body>
+	<script>
+		let root = 'https://www.codewars.com/api/v1';
+		let apiKey = 'KVG_6fAXjCSZnn-1nLvF';
+		async function getUser(user) {
+			let response = await fetch(root+'/users/'+user, {
+				method: 'GET',
+				headers: {
+					'Authorization': apiKey,
+					'Access-Control-Allow-Origin': '*.',
+					'mode': 'no-cors',
+					'credentials': 'omit'
+				}
+			});
+			return await response.json();
+		}
+		async function getUserKatas(user, page) {
+			
+			let response = await fetch(root+'/users/'+user+'/code-challenges/completed?page='+page, {
+				method: 'GET',
+				headers: {
+					'Authorization': apiKey
+				}
+			});
+
+			let all = response.json();
+			let allDetails = [];
+
+			for(let kata of all.data) {
+				let r = await fetch(root+'/code-challenges/'+kata.id, {
+					method: 'GET',
+					headers: {
+						'Authorization': apiKey
+					}
+				});
+				allDetails.push(await r.json());
+			}
+			
+			return allDetails;
+		}
+	</script>
+</body>
+</html>
